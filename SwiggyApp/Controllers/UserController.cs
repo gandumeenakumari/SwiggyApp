@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
 using SwiggyApp.Models;
 
 namespace SwiggyApp.Controllers
@@ -39,20 +38,12 @@ namespace SwiggyApp.Controllers
         {
             var userAvailable = _context.Users.Where(u => 
             u.Email == user.Email && u.Pwd == user.PWd).FirstOrDefault();
-            
-            if(userAvailable!=null)
+            if (userAvailable != null)
             {
-                return Ok(new JwtService(_config).GenerateToken(
-                    userAvailable.UserId.ToString(),
-                    userAvailable.FirstName,
-                    userAvailable.LastName,
-                    userAvailable.Email,
-                    userAvailable.Mobile,
-                    userAvailable.Gender
-                    )
-                    );
+                return Ok("Success");
             }
-            return Ok("Failure");
+            else { return Ok("Failure"); }
+           
 
         }
 

@@ -11,6 +11,7 @@ namespace SwiggyApp.Models
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Login> Login { get; set; }
         public DbSet<Products> Products { get; set; }
     }
 }
